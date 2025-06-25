@@ -82,5 +82,34 @@
         "getDeliveries": "Get Deliveries with FreshCart",
         "googlePlay": "Get it on Google Play",
         "appStore": "Download on the App Store"
-    }
+    },
+    "passwordReset": {
+    "emailLabel": "Email",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
+    "verificationCode": "Verification Code",
+    "codeRequired": "Verification code is required",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordPattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+    "confirmRequired": "Please confirm your password",
+    "passwordMismatch": "Passwords do not match",
+    "sendCodeButton": "Send Verification Code",
+    "sendingButton": "Sending...",
+    "verifyCodeButton": "Verify Code",
+    "verifyingButton": "Verifying...",
+    "resetButton": "Reset Password",
+    "resettingButton": "Resetting...",
+    "codeSentSuccess": "Verification code sent to your email",
+    "codeVerifiedSuccess": "Code verified successfully",
+    "passwordResetSuccess": "Password reset successfully. You can now login with your new password."
+  },
+  
+  "errorMessages": {
+    "sendCodeFailed": "Failed to send verification code. Please try again.",
+    "invalidCode": "Invalid verification code. Please try again.",
+    "resetFailed": "Failed to reset password. Please try again."
+  }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forget-password',
@@ -9,21 +10,26 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent {
-   step: number = 1;
+  step: number = 1;
   isLoading: boolean = false;
   errorMessage: string = '';
   successMessage: string = '';
   userEmail: string = '';
 
-  resetForm: FormGroup;
-  codeForm: FormGroup;
-  passwordForm: FormGroup;
+  resetForm!: FormGroup;
+  codeForm!: FormGroup;
+  passwordForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
+    this.initializeForms();
+  }
+
+  private initializeForms(): void {
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
@@ -52,28 +58,34 @@ export class ForgetPasswordComponent {
       : null;
   };
 
-  onSubmit() {
-    if (this.resetForm.invalid) return;
+  onSubmit(): void {
+    if (this.resetForm.invalid) {
+      this.markFormGroupTouched(this.resetForm);
+      return;
+    }
 
     this.isLoading = true;
     this.errorMessage = '';
     this.userEmail = this.resetForm.value.email;
 
     this.authService.setEmailVerify({ email: this.userEmail }).subscribe({
-      next: (response) => {
+      next: () => {
         this.isLoading = false;
-        this.successMessage = 'Verification code sent to your email';
+        this.successMessage = this.translate.instant('passwordReset.codeSentSuccess');
         this.step = 2;
       },
       error: (error) => {
         this.isLoading = false;
-        this.errorMessage = error.error?.message || 'Failed to send verification code. Please try again.';
+        this.handleError(error, 'errorMessages.sendCodeFailed');
       }
     });
   }
 
-  onVerifyCode() {
-    if (this.codeForm.invalid) return;
+  onVerifyCode(): void {
+    if (this.codeForm.invalid) {
+      this.markFormGroupTouched(this.codeForm);
+      return;
+    }
 
     this.isLoading = true;
     this.errorMessage = '';
@@ -84,20 +96,23 @@ export class ForgetPasswordComponent {
     };
 
     this.authService.setCodeVerify(data).subscribe({
-      next: (response:any) => {
+      next: () => {
         this.isLoading = false;
-        this.successMessage = 'Code verified successfully';
+        this.successMessage = this.translate.instant('passwordReset.codeVerifiedSuccess');
         this.step = 3;
       },
       error: (error) => {
         this.isLoading = false;
-        this.errorMessage = error.error?.message || 'Invalid verification code. Please try again.';
+        this.handleError(error, 'errorMessages.invalidCode');
       }
     });
   }
 
-  onResetPassword() {
-    if (this.passwordForm.invalid) return;
+  onResetPassword(): void {
+    if (this.passwordForm.invalid) {
+      this.markFormGroupTouched(this.passwordForm);
+      return;
+    }
 
     this.isLoading = true;
     this.errorMessage = '';
@@ -108,16 +123,34 @@ export class ForgetPasswordComponent {
     };
 
     this.authService.setResetPass(data).subscribe({
-      next: (response) => {
+      next: () => {
         this.isLoading = false;
-        this.successMessage = 'Password reset successfully. You can now login with your new password.';
+        this.successMessage = this.translate.instant('passwordReset.passwordResetSuccess');
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 3000);
       },
       error: (error) => {
         this.isLoading = false;
-        this.errorMessage = error.error?.message || 'Failed to reset password. Please try again.';
+        this.handleError(error, 'errorMessages.resetFailed');
+      }
+    });
+  }
+
+  private handleError(error: any, defaultTranslationKey: string): void {
+    if (error.error?.message) {
+      this.errorMessage = error.error.message;
+    } else {
+      this.errorMessage = this.translate.instant(defaultTranslationKey);
+    }
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup): void {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
       }
     });
   }
