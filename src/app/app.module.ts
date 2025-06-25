@@ -39,6 +39,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ProductComponent } from './shared/components/product/product.component';
 import { CategoryComponent } from './shared/components/category/category.component';
 import { BrandComponent } from './shared/components/brand/brand.component';
+import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductComponent,
     CategoryComponent,
     BrandComponent,
+    ForgetPasswordComponent,
 
   ],
   imports: [

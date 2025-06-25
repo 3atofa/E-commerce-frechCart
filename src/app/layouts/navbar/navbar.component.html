@@ -47,31 +47,31 @@
     </div>
 
     <div class="w-full p-2 flex justify-between border-t-2 items-center">
-        <ul class="capitalize flex justify-center rounded-lg md:flex-row md:space-x-2 rtl:space-x-reverse md:mt-0 md:border-0">
+        <ul class="capitalize flex justify-center rounded-lg md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0">
             <!-- Social media icons -->
             <li>
-                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                <a href="#" class="block py-2 px-2 text-sky-700" (click)="preventDefault($event)">
                     <i class="fab fa-facebook"></i>
                 </a>
             </li>
             <li>
-                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                <a href="#" class="block py-2 px-2 text-sky-700" (click)="preventDefault($event)">
                     <i class="fab fa-instagram"></i>
                 </a>
             </li>
             <li>
-                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                <a href="#" class="block py-2 px-2 text-sky-700" (click)="preventDefault($event)">
                     <i class="fab fa-tiktok"></i>
                 </a>
             </li>
             <li>
-                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                <a href="#" class="block py-2 px-2 text-sky-700" (click)="preventDefault($event)">
                     <i class="fab fa-twitter"></i>
                 </a>
             </li>
         </ul>
 
-        <ul class="flex">
+        <ul class="flex items-center">
             <!-- Login/Register Links - Using computed signals -->
             <li *ngIf="showLoginLink()">
                 <a routerLink="/login" routerLinkActive="bg-black text-white rounded-xl"
@@ -81,7 +81,7 @@
             </li>
             <li *ngIf="showRegisterLink()">
                 <a routerLink="/register" 
-                    class="block py-2 px-3 rounded bg-blue-600 text-white">
+                    class="block py-2 px-3 ms-3 rounded bg-blue-600 text-white">
                     {{ 'navbar.register' | translate }}
                 </a>
             </li>
@@ -98,7 +98,7 @@
 
             <!-- Language Dropdown -->
             <li class="relative group">
-                <button class="block py-2 mx-3 text-gray-700 rounded-sm focus:outline-none border-b-2 border-gray-400">
+                <button class="block py-2 mx-3 text-sm text-gray-700 rounded-sm focus:outline-none border-b-2 border-gray-400">
                     🌐 {{ 'navbar.lang' | translate }} 
                 </button>
 
