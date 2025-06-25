@@ -1,0 +1,86 @@
+{
+    "home": {
+        "slider": {
+            "altText": "Promotional banner"
+        },
+        "popularProducts": {
+            "title": "Popular Products",
+            "searchPlaceholder": "Search by Name...",
+            "viewMore": "View more Products"
+        }
+    },
+    "products": {
+        "title": "Products",
+        "searchPlaceholder": "Search by Name...",
+        "viewMore": "View more Products",
+        "noProductsFound": "No products found"
+    },
+    "cart": {
+        "emptyCart": "No Products in Cart yet",
+        "title": "Shop Cart",
+        "totalPrice": "Total Cart Price",
+        "clearCart": "Clear Cart",
+        "product": {
+            "price": "Price",
+            "remove": "Remove",
+            "checkout": "Checkout"
+        }
+    },
+    "productCard": {
+        "addToCart": "Add To Cart",
+        "price": "EGP",
+        "rating": {
+            "label": "Rating"
+        }
+    },
+    "navbar": {
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "brands": "Brands",
+        "login": "Login",
+        "register": "Register",
+        "signout": "Logout",
+        "lang": "Language"
+    },
+    "login": {
+        "loginNow": "Login Now",
+        "email": "Email",
+        "password": "Password",
+        "signIn": "Sign In",
+        "forgetPassword": "Forgot Password?",
+        "forgetPasswordLink": "Forgot your password?",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "passwordRequired": "Password is required",
+        "passwordInvalid": "Please enter a valid password"
+    },
+    "register": {
+        "registerNow": "Register Now",
+        "name": "Name",
+        "rePassword": "Confirm Password",
+        "phone": "Phone",
+        "signUp": "Sign Up",
+        "nameRequired": "Name is required",
+        "nameMinLength": "Minimum length 3",
+        "nameMaxLength": "Maximum length 20",
+        "phoneRequired": "Phone is required",
+        "phoneInvalid": "Please enter a valid phone number",
+        "passwordMismatch": "Does not match password",
+        "successMessage": "Registration successful!"
+    },
+    "footer": {
+        "getApp": "Get The FreshCart App",
+        "appDescription": "We Will Send You a Link, Open it on Your Phone to download the app",
+        "emailPlaceholder": "Email",
+        "shareAppLink": "Share App Link",
+        "paymentPartners": "Payment partners",
+        "amazonPay": "Amazon Pay",
+        "americanExpress": "American Express",
+        "paypal": "PayPal",
+        "mastercard": "Mastercard",
+        "getDeliveries": "Get Deliveries with FreshCart",
+        "googlePlay": "Get it on Google Play",
+        "appStore": "Download on the App Store"
+    }
+}

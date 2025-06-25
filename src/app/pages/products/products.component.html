@@ -1,0 +1,13 @@
+<section class="py-5 mx-2">
+    <div class="flex justify-between w-full my-3">
+        <h2 class="text-xl lg:text-2xl capitalize text-sky-500 border-b-2 border-sky-500">{{ 'products.title' | translate }}</h2>
+        <input type="search" [(ngModel)]="text" placeholder="{{ 'products.searchPlaceholder' | translate }}" class="search w-1/2 text-sky-600 border-sky-500 rounded-xl placeholder:text-sky-500">
+    </div>
+    <div class="flex flex-wrap gap-3 justify-center items-center">  
+        <!-- ~ card starts -->
+        <ng-container *ngFor="let prod of products() | search: text; trackBy: trackByProductId">
+            <app-product [product]="prod"></app-product>
+        </ng-container>
+        <!-- ~ card ends  -->
+    </div>        
+</section>

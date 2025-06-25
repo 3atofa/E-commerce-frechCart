@@ -1,0 +1,58 @@
+<h2 *ngIf="cartDetails.products.length == 0" class="text-center text-3xl mt-24">
+  {{ 'cart.emptyCart' | translate }}
+</h2>
+
+<section *ngIf="cartDetails.products.length != 0" class="section ">
+  <h1 class="text-center text-3xl text-green-600">
+    {{ 'cart.title' | translate }}
+  </h1>
+  
+  <div class="flex my-2 justify-between items-center">
+    <p class="text-green-600 text-xl border-b border-green-600 pb-2">
+      {{ 'cart.totalPrice' | translate }} : {{cartDetails.totalCartPrice | currency:'GBP'}}
+    </p>
+
+    <button (click)="clearCart()" class="text-white bg-red-600 hover:bg-red-500 p-2 w-32 rounded">
+      {{ 'cart.clearCart' | translate }}
+    </button>
+  </div>
+
+  <!-- Products in cart -->
+  <div *ngFor="let prod of cartDetails.products" class="flex flex-col lg:flex-row px-2 shadow rounded-xl py-2 items-center justify-between my-2 border-b-2 pb-3">
+    <div class="flex w-fit">
+      <img [src]="prod.product.imageCover" 
+           class="w-36 me-4" 
+           [alt]="prod.product.title">
+      <div class="">
+        <h3>{{ prod.product.title }}</h3>
+        <h4 class="text-green-600">
+          {{ 'cart.product.price' | translate }} : {{ prod.price | currency:'GBP' }}
+        </h4>
+        <button (click)="removeItem(prod.product.id)" 
+                class="bg-red-700 hover:bg-red-600 text-white px-2 py-1 rounded my-3">
+          <i class="fas fa-trash-can me-2"></i>
+          {{ 'cart.product.remove' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex items-center my-2 lg:my-0">
+        <button (click)="updateProductCount(prod.product.id, prod.count-1)">
+          <i class="fa-regular fa-square-minus text-green-600 text-3xl"></i>
+        </button>
+        <span class="px-3">{{prod.count}}</span>
+        <button (click)="updateProductCount(prod.product.id, prod.count+1)">
+          <i class="fa-regular fa-square-plus text-green-600 text-3xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- End products in cart -->
+
+  <!-- Checkout button -->
+  <button [routerLink]="['/checkout', cartDetails._id]" 
+          class="px-10 py-2 mt-4 text-xl font-medium bg-green-700 text-white hover:bg-green-600 rounded-xl block mx-auto">
+    {{ 'cart.product.checkout' | translate }}
+  </button>
+</section>

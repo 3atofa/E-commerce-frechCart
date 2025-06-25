@@ -1,0 +1,86 @@
+{ 
+  "home": {
+    "slider": {
+      "altText": "بانر ترويجي"
+    },
+    "popularProducts": {
+      "title": "المنتجات الأكثر مبيعاً",
+      "searchPlaceholder": "البحث بالاسم...",
+      "viewMore": "عرض المزيد من المنتجات"
+    }
+  },
+  "cart": {
+    "emptyCart": "لا توجد منتجات في السلة",
+    "title": "سلة التسوق",
+    "totalPrice": "إجمالي سعر السلة",
+    "clearCart": "إفراغ السلة",
+    "product": {
+      "price": "السعر",
+      "remove": "إزالة",
+      "checkout": "الدفع"
+    }
+  },
+  "productCard": {
+    "addToCart": "أضف إلى السلة",
+    "price": "جنيه",
+    "rating": {
+      "label": "التقييم"
+    }
+  },
+  "products": {
+    "title": "المنتجات",
+    "searchPlaceholder": "البحث بالاسم...",
+    "viewMore": "عرض المزيد من المنتجات",
+    "noProductsFound": "لا توجد منتجات"
+  },
+  "navbar": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "brands": "الماركات",
+    "categories": "التصنيفات",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "signout": "تسجيل الخروج",
+    "lang": "اللغة"
+  },
+  "login": {
+    "loginNow": "سجّل دخولك الآن",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "signIn": "تسجيل الدخول",
+    "forgetPassword": "نسيت كلمة المرور؟",
+    "forgetPasswordLink": "هل نسيت كلمة المرور؟",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "emailInvalid": "يرجى إدخال بريد إلكتروني صالح",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "passwordInvalid": "يرجى إدخال كلمة مرور صالحة"
+  },
+  "register": {
+    "registerNow": "سجل الآن",
+    "name": "الاسم",
+    "rePassword": "تأكيد كلمة المرور",
+    "phone": "الهاتف",
+    "signUp": "إنشاء حساب",
+    "nameRequired": "الاسم مطلوب",
+    "nameMinLength": "الحد الأدنى 3 أحرف",
+    "nameMaxLength": "الحد الأقصى 20 حرفاً",
+    "phoneRequired": "الهاتف مطلوب",
+    "phoneInvalid": "يرجى إدخال رقم هاتف صالح",
+    "passwordMismatch": "لا تتطابق مع كلمة المرور",
+    "successMessage": "تم التسجيل بنجاح!"
+  },
+  "footer": {
+    "getApp": "احصل على تطبيق فريش كارت",
+    "appDescription": "سنرسل لك رابطاً، افتحه على هاتفك لتحميل التطبيق",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "shareAppLink": "مشاركة رابط التطبيق",
+    "paymentPartners": "شركاء الدفع",
+    "amazonPay": "أمازون باي",
+    "americanExpress": "أمريكان إكسبريس",
+    "paypal": "باي بال",
+    "mastercard": "ماستركارد",
+    "getDeliveries": "احصل على التوصيل مع فريش كارت",
+    "googlePlay": "متوفر على جوجل بلاي",
+    "appStore": "تحميل من آب ستور"
+  }
+}

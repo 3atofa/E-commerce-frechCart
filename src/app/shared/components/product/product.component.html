@@ -1,0 +1,24 @@
+<div class="card border max-w-[600px] border-sky-500 rounded-md overflow-hidden hover:shadow-md relative">
+    <div class="" [routerLink]="['/details', product.id]">
+        <div class="card-img">
+            <img [src]="product.imageCover" class="w-full h-[250px] object-contain" [alt]="product.title" />
+        </div>
+
+        <div class="card-body px-2 py-4">
+            <h4 class="text-sky-500 text-xs">{{ product.category.name }}</h4>
+            <h3 class="font-medium">{{ product.title.split(' ', 2).join(' ') }}</h3>
+            <div class="flex justify-between items-center">
+                <span>{{ product.price }} {{ 'productCard.price' | translate }}</span>
+                <div class="flex items-center">
+                    <i class="fas fa-star text-yellow-300"></i>
+                    <span class="text-gray-500">{{ product.ratingsAverage }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="addToCart(product.id)" 
+            class="bg-sky-600 text-white py-2  rounded w-[90%] mx-auto block mb-2">
+        {{ 'productCard.addToCart' | translate }}
+    </button>
+</div>

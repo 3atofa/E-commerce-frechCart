@@ -1,0 +1,63 @@
+<section class="lg:w-1/2 mx-3 md:mx-auto bg-gray-50 p-4 rounded border shadow mt-24 lg:mt-10">
+  <h1 class="text-3xl font-light text-center">{{ 'login.loginNow' | translate }}</h1>
+  <form [formGroup]="login" (ngSubmit)="submitForm()">
+    <!-- Email -->
+    <div class="mb-1">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'login.email' | translate }}
+      </label>
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        *ngIf="login.get('email')?.errors && login.get('email')?.touched"
+        class="flex my-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <ul class="mt-1.5 list-disc list-inside">
+          <li *ngIf="login.get('email')?.getError('required')">{{ 'login.emailRequired' | translate }}</li>
+          <li *ngIf="login.get('email')?.getError('email')">{{ 'login.emailInvalid' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Password -->
+    <div class="mb-1">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'login.password' | translate }}
+      </label>
+      <input
+        formControlName="password"
+        type="password"
+        id="password"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        *ngIf="login.get('password')?.errors && login.get('password')?.touched"
+        class="flex my-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <ul class="mt-1.5 list-disc list-inside">
+          <li *ngIf="login.get('password')?.getError('required')">{{ 'login.passwordRequired' | translate }}</li>
+          <li *ngIf="login.get('password')?.getError('pattern')">{{ 'login.passwordInvalid' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Submit Button -->
+    <button [disabled]="login.invalid || isLoading" type="submit" class="btn-main mt-3">
+      <span *ngIf="!isLoading">{{ 'login.signIn' | translate }}</span>
+      <i *ngIf="isLoading" class="fas fa-spin fa-spinner"></i>
+    </button>
+    
+    <!-- Forgot Password Link -->
+    <a routerLink="/forget" class="text-blue-500 hover:text-blue-400 mx-3">{{ 'login.forgetPasswordLink' | translate }}</a>
+    
+    <!-- Messages -->
+    <p *ngIf="msError" class="bg-red-500 text-white px-2 py-4 rounded my-2 border">{{ msError }}</p>
+    <p *ngIf="isSuccess" class="bg-green-500 text-white px-2 py-4 rounded my-2 border">{{ isSuccess }}</p>
+  </form>
+</section>

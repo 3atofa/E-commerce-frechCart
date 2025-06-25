@@ -1,0 +1,9 @@
+<section class="px-4 py-10">
+    <div class="flex flex-wrap gap-4 justify-center">
+        <ng-container *ngFor="let brand of BrandsData()">
+            <app-brand [data]="brand"></app-brand>
+        </ng-container>
+        
+
+    </div>
+</section>

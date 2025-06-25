@@ -1,0 +1,135 @@
+<nav class="bg-gray-100 border-gray-200 dark:bg-gray-900 py-4 lg:py-0 fixed left-0 right-0 z-50">
+    <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-4 py-0">
+        <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse py-3">
+            <img src="/assets/freshcart-logo.svg" alt="FreshCart Logo">
+        </a>
+
+        <button data-collapse-toggle="navbar-default" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+
+        <div class="hidden w-full ms-auto md:flex items-center md:w-auto" id="navbar-default">
+            <!-- Left side links (if logged in) -->
+            <ul *ngIf="isLogin"
+                class="capitalize flex flex-col p-4 mt-4 border text-center border-gray-100 rounded-lg md:flex-row md:space-x-2 rtl:space-x-reverse md:mt-0 md:border-0">
+                <li>
+                    <a routerLink="/home" routerLinkActive="text-sky-500 rounded-xl"
+                        class="block py-2 px-3 text-gray-700 font-normal rounded-sm" aria-current="page">
+                        {{ 'navbar.home' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/products" routerLinkActive="text-sky-500 rounded-xl"
+                        class="block py-2 px-3 text-gray-700 font-normal rounded-sm" aria-current="page">
+                        {{ 'navbar.products' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/categories" routerLinkActive="text-sky-500 rounded-xl"
+                        class="block py-2 px-3 text-gray-700 font-normal rounded-sm" aria-current="page">
+                        {{ "navbar.categories" | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/brands" routerLinkActive="text-sky-500 rounded-xl"
+                        class="block py-2 px-3 text-gray-700 font-normal rounded-sm" aria-current="page">
+                        {{ 'navbar.brands' | translate }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="w-full p-2 flex justify-between border-t-2 items-center">
+        <ul class="capitalize flex justify-center rounded-lg md:flex-row md:space-x-2 rtl:space-x-reverse md:mt-0 md:border-0">
+            <!-- Social media icons -->
+            <li>
+                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block py-2 px-3 text-sky-700" (click)="preventDefault($event)">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="flex">
+            <!-- Login/Register Links - Using computed signals -->
+            <li *ngIf="showLoginLink()">
+                <a routerLink="/login" routerLinkActive="bg-black text-white rounded-xl"
+                    class="block py-2 px-3 rounded-sm bg-blue-600 text-white">
+                    {{ 'navbar.login' | translate }}
+                </a>
+            </li>
+            <li *ngIf="showRegisterLink()">
+                <a routerLink="/register" 
+                    class="block py-2 px-3 rounded bg-blue-600 text-white">
+                    {{ 'navbar.register' | translate }}
+                </a>
+            </li>
+
+            <!-- Cart (if logged in) -->
+            <li *ngIf="isLogin">
+                <a routerLink="/cart" class="block py-2 px-3 text-sky-700 text-2xl rounded-sm relative">
+                    <i class="fas fa-cart-shopping"></i>
+                    <span class="absolute top-0 right-0 bg-sky-800 rounded-xl px-2 text-sm text-white">
+                        {{ cartNumber() }}
+                    </span>
+                </a>
+            </li>
+
+            <!-- Language Dropdown -->
+            <li class="relative group">
+                <button class="block py-2 mx-3 text-gray-700 rounded-sm focus:outline-none border-b-2 border-gray-400">
+                    🌐 {{ 'navbar.lang' | translate }} 
+                </button>
+
+                <!-- Dropdown Menu -->
+                <ul class="absolute z-50 hidden group-hover:block bg-white border border-gray-200 rounded-lg shadow-lg w-28 dark:bg-gray-800">
+                    <li>
+                        <a [class.hidden]="translateService.currentLang === 'en'" 
+                           href="#" 
+                           (click)="changeLang('en'); preventDefault($event)"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            English
+                        </a>
+                    </li>
+                    <li>
+                        <a [class.hidden]="translateService.currentLang === 'ar'" 
+                           href="#" 
+                           (click)="changeLang('ar'); preventDefault($event)"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            العربية
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Logout -->
+            <li *ngIf="isLogin">
+                <button (click)="logOut()"
+                    class="block py-2 px-3 text-white mx-2 bg-red-800 rounded-sm">
+                    {{ 'navbar.signout' | translate }}
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>

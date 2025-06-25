@@ -1,0 +1,163 @@
+<section class="lg:w-1/2 mx-4 md:mx-auto bg-gray-50 p-4 rounded border shadow mt-32">
+    <h1 class="text-3xl font-light text-center">{{ 'register.registerNow' | translate }}</h1>
+
+    <form [formGroup]="register" (ngSubmit)="submitForm()">
+        <!-- Name Field -->
+        <div class="mb-1">
+            <label for="name" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                {{ 'register.name' | translate }}
+            </label>
+            <input formControlName="name" type="text" id="name"
+                class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            <div *ngIf="register.get('name')?.errors && register.get('name')?.touched"
+                class="flex my-2 p-4 mb-4 text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li *ngIf="register.get('name')?.getError('required')">
+                            {{ 'register.nameRequired' | translate }}
+                        </li>
+                        <li *ngIf="register.get('name')?.getError('minlength')">
+                            {{ 'register.nameMinLength' | translate }}
+                        </li>
+                        <li *ngIf="register.get('name')?.getError('maxlength')">
+                            {{ 'register.nameMaxLength' | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="mb-1">
+            <label for="email" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                {{ 'login.email' | translate }}
+            </label>
+            <input formControlName="email" type="email" id="email"
+                class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            <div *ngIf="register.get('email')?.errors && register.get('email')?.touched"
+                class="flex my-2 p-4 mb-4 text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li *ngIf="register.get('email')?.getError('required')">
+                            {{ 'login.emailRequired' | translate }}
+                        </li>
+                        <li *ngIf="register.get('email')?.getError('email')">
+                            {{ 'login.emailInvalid' | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-1">
+            <label for="password" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                {{ 'login.password' | translate }}
+            </label>
+            <input formControlName="password" type="password" id="password"
+                class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            <div *ngIf="register.get('password')?.errors && register.get('password')?.touched"
+                class="flex my-2 p-4 mb-4 text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li *ngIf="register.get('password')?.getError('required')">
+                            {{ 'login.passwordRequired' | translate }}
+                        </li>
+                        <li *ngIf="register.get('password')?.getError('pattern')">
+                            {{ 'login.passwordInvalid' | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="mb-1">
+            <label for="rePassword" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                {{ 'register.rePassword' | translate }}
+            </label>
+            <input formControlName="rePassword" type="password" id="rePassword"
+                class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            <div *ngIf="register.getError('mismatch') && register.get('rePassword')?.touched"
+                class="flex my-2 p-4 mb-4 text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li *ngIf="register.getError('mismatch')">
+                            {{ 'register.passwordMismatch' | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div *ngIf="register.get('rePassword')?.errors && register.get('rePassword')?.touched"
+                class="flex my-2 p-4 mb-4 text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li *ngIf="register.get('rePassword')?.getError('required')">
+                            {{ 'register.rePassword' | translate }} {{ 'login.passwordRequired' | translate | lowercase }}
+                        </li>
+                        <li *ngIf="register.get('rePassword')?.getError('pattern')">
+                            {{ 'login.passwordInvalid' | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phone Field -->
+        <div class="mb-1">
+            <label for="phone" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                {{ 'register.phone' | translate }}
+            </label>
+            <input formControlName="phone" type="tel" id="phone"
+                class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            <div *ngIf="register.get('phone')?.errors && register.get('phone')?.touched"
+                class="flex my-2 p-4 mb-4 text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li *ngIf="register.get('phone')?.getError('required')">
+                            {{ 'register.phoneRequired' | translate }}
+                        </li>
+                        <li *ngIf="register.get('phone')?.getError('pattern')">
+                            {{ 'register.phoneInvalid' | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button [disabled]="register.invalid || isLoading" type="submit" class="btn-main">
+            <span *ngIf="!isLoading">{{ 'register.signUp' | translate }}</span>
+            <i *ngIf="isLoading" class="fas fa-spin fa-spinner"></i>
+        </button>
+
+        <!-- Error/Success Messages -->
+        <p *ngIf="msError" class="bg-red-500 text-white px-2 py-4 rounded my-2 border">{{ msError }}</p>
+        <p *ngIf="isSuccess" class="bg-green-500 text-white px-2 py-4 rounded my-2 border">
+            {{ 'register.successMessage' | translate }}
+        </p>
+    </form>
+</section>

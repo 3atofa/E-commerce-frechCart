@@ -1,0 +1,13 @@
+<section class="py-5 mx-2">
+
+    <h2 class="text-2xl my-4 lg:text-2xl mx-auto w-fit capitalize text-sky-500 border-b-2 border-sky-500">Categories</h2>
+
+
+    <div class="flex flex-wrap gap-3 justify-center items-center">
+        <!-- ~ card starts -->
+        <ng-container *ngFor="let category of categories()  trackByCategoryId">
+            <app-category [category]="category"></app-category>
+        </ng-container>
+        <!-- ~ card ends  -->
+    </div>
+</section>
